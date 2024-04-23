@@ -5,8 +5,10 @@ import {
 
 
 import {
-    getAllEmployeesWithBossAndCodeSeven
+    getAllEmployeesWithBossAndCodeSeven,
+    getBossFullNameAndEmail,
+    getAll
 } from "./module/employees.js";
 
-console.log(await getAllEmployeesWithBossAndCodeSeven());
+console.log(await getAll());
 // console.log(await getAllOfficesFromSpainCityAndMobile());
