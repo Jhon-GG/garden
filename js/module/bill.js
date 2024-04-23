@@ -1,4 +1,4 @@
-import {getAllProductBill} from "./component/shopBillCamper.js"
+import {getAllProductBill} from "../component/shopBillCamper.js"
 
 let myBill = document.querySelector('#myBill');
 let data = await getAllProductBill();
