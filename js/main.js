@@ -15,8 +15,13 @@ import {
 // console.log(await getAllEmployeesIsntSaleRepresentatives());
 
 import {
-    getAllClientsFromSpain
+    getAllClientsFromSpain,
 } from "./module/clients.js";
 
-console.log(await getAllClientsFromSpain());
+// console.log(await getAllClientsFromSpain());
 
+import {
+    getAllStatusesOfaRequest
+} from "./module/requests.js"
+
+console.log(await getAllStatusesOfaRequest());
