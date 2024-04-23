@@ -34,3 +34,18 @@ console.log(contar);
 //     return `${nombre} ${apellido}`
 // }
 // console.log(saludar(...["Miguel", "Castro"]));
+
+
+//EJERCICIO EN CLASE
+
+fs.readFile(import.meta.dirname + "/db/product.json", "utf-8", (err, data) => {
+    let json = JSON.parse(data);
+
+    let contar = (tamano = 0, nombreGama = "Frutales", array = []) => {
+        let productos = (json.products.lenght != tamano) ? json.products[tamano] : undefined;
+        let gamaNuevo = `${(productos.gama != nombreGama) ? productos.name : undefined}`
+        array.push(gamaNuevo)
+        return (json.products.lenght == tamano) ? array : contar(tamano + 1, array);
+    }
+    console.log(contar())
+})
