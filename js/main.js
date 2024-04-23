@@ -1,3 +1,12 @@
-import { getAll } from "./module/offices.js";
+import { 
+    getAllOfficesCodeAndCity,
+    getAllOfficesFromSpainCityAndMobile
+} from "./module/offices.js";
 
-console.log(await getAll());
+
+import {
+    getAllEmployeesWithBossAndCodeSeven
+} from "./module/employees.js";
+
+console.log(await getAllEmployeesWithBossAndCodeSeven());
+// console.log(await getAllOfficesFromSpainCityAndMobile());
