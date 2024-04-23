@@ -24,4 +24,11 @@ import {
     getAllStatusesOfaRequest
 } from "./module/requests.js"
 
-console.log(await getAllStatusesOfaRequest());
+// console.log(await getAllStatusesOfaRequest());
+
+import {
+    getAll
+} from "./module/payments.js"
+
+console.log(await getAll());
+
