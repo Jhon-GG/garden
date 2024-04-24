@@ -29,7 +29,7 @@ import {
     getAllOrdersDeliveredInJanuary
 } from "./module/requests.js"
 
-console.log(await getAllRejectedOrdersIn2009());
+// console.log(await getAllRejectedOrdersIn2009());
 
 import {
     getAllClientsWithPaymentsIn2008,
@@ -44,4 +44,4 @@ import {
     getAllOrnamentalProducts
 } from "./module/products.js"
 
-// console.log(await getAllOrnamentalProducts());
+console.log(await getAllOrnamentalProducts());
