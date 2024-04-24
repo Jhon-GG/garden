@@ -16,10 +16,11 @@ import {
 
 import {
     getAllClientsFromSpain,
-    getAllClientsFromMadrid
+    getAllClientsFromMadrid,
+    getClientsEmploy
 } from "./module/clients.js";
 
-// console.log(await getAllClientsFromMadrid());
+console.log(await getClientsEmploy());
 
 import {
     getAllStatusesOfaRequest,
@@ -44,4 +45,4 @@ import {
     getAllOrnamentalProducts
 } from "./module/products.js"
 
-console.log(await getAllOrnamentalProducts());
+// console.log(await getAllOrnamentalProducts());
