@@ -56,3 +56,50 @@ export const getAllDiferenceOfTwoDays = async () => {
     });
     return dataUpdate;
 };
+
+
+// 11. Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
+
+export const getAllRejectedOrdersIn2009 = async () => {
+    let res = await fetch("http://localhost:5508/requests?status=Rechazado");
+    let data = await res.json();
+    let dataUpdate = [];
+
+    data.forEach(val => {
+        let year = new Date(val.date_delivery).getFullYear();
+
+        if (year === 2009) {
+            dataUpdate.push({
+                Codigo_pedido: val.code_request,
+                Codigo_cliente: val.code_client,
+                Fecha_esperada: val.date_wait,
+                Fecha_entrega: val.date_delivery
+            });
+        }
+    });
+
+    return dataUpdate;
+};
+
+
+// 12. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
+
+export const getAllOrdersDeliveredInJanuary  = async () => {
+    let res = await fetch("http://localhost:5508/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = [];
+
+    data.forEach(val => {
+        let month = new Date(val.date_delivery).getMonth();
+
+        if (month === 0) {
+            dataUpdate.push({
+                Codigo_pedido: val.code_request,
+                Codigo_cliente: val.code_client,
+                Fecha_esperada: val.date_wait,
+                Fecha_entrega: val.date_delivery
+            });
+        }
+    });
+    return dataUpdate;
+};
