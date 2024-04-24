@@ -22,10 +22,11 @@ import {
 
 import {
     getAllStatusesOfaRequest,
-    getAll
+    getAllRequestsOutOfTime,
+    getAllDiferenceOfTwoDays
 } from "./module/requests.js"
 
-console.log(await getAll());
+console.log(await getAllDiferenceOfTwoDays());
 
 import {
     getAllClientsWithPaymentsIn2008

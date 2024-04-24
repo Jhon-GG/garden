@@ -14,7 +14,7 @@ export const getAllStatusesOfaRequest= async () => {
 
 // 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
 
-export const getAll = async () => {
+export const getAllRequestsOutOfTime = async () => {
     let res = await fetch("http://localhost:5508/requests?status=Rechazado");
     let data = await res.json();
     let dataUpdate = [];
@@ -29,3 +29,30 @@ export const getAll = async () => {
     });
     return dataUpdate;
 }
+
+// 10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
+export const getAllDiferenceOfTwoDays = async () => {
+    let res = await fetch("http://localhost:5508/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = [];
+
+    data.forEach(val => {
+        // Convertir las fechas a objetos Date
+        let fechaEsperada = new Date(val.date_wait);
+        let fechaEntrega = new Date(val.date_delivery);
+        
+        let diferencia = fechaEsperada.getTime() - fechaEntrega.getTime();
+        let diferenciaEnDias = diferencia / (1000 * 3600 * 24);
+
+        if (diferenciaEnDias >= 2) {
+            dataUpdate.push({
+                Codigo_pedido: val.code_request,
+                Codigo_cliente: val.code_client,
+                Fecha_esperada: val.date_wait,
+                Fecha_entrega: val.date_delivery
+            });
+        }
+    });
+    return dataUpdate;
+};
