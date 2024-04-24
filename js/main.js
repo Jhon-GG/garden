@@ -23,14 +23,17 @@ import {
 import {
     getAllStatusesOfaRequest,
     getAllRequestsOutOfTime,
-    getAllDiferenceOfTwoDays
+    getAllDiferenceOfTwoDays,
+    getAllRejectedOrdersIn2009,
+    getAllOrdersDeliveredInJanuary
 } from "./module/requests.js"
 
-console.log(await getAllDiferenceOfTwoDays());
+// console.log(await getAllOrdersDeliveredInJanuary());
 
 import {
-    getAllClientsWithPaymentsIn2008
+    getAllClientsWithPaymentsIn2008,
+    getAllPaymentsWithPaypaln2008
 } from "./module/payments.js"
 
-// console.log(await getAllClientsWithPaymentsIn2008());
+console.log(await getAll());
 
