@@ -21,14 +21,15 @@ import {
 // console.log(await getAllClientsFromSpain());
 
 import {
-    getAllStatusesOfaRequest
+    getAllStatusesOfaRequest,
+    getAll
 } from "./module/requests.js"
 
-// console.log(await getAllStatusesOfaRequest());
+console.log(await getAll());
 
 import {
-    getAll
+    getAllClientsWithPaymentsIn2008
 } from "./module/payments.js"
 
-console.log(await getAll());
+// console.log(await getAllClientsWithPaymentsIn2008());
 
