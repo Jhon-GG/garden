@@ -47,3 +47,4 @@ export const getAllEmployeesIsntSaleRepresentatives = async () => {
     });
     return dataUpdate;
 }
+

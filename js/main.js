@@ -16,9 +16,10 @@ import {
 
 import {
     getAllClientsFromSpain,
+    getAllClientsFromMadrid
 } from "./module/clients.js";
 
-// console.log(await getAllClientsFromSpain());
+console.log(await getAllClientsFromMadrid());
 
 import {
     getAllStatusesOfaRequest,
@@ -32,8 +33,15 @@ import {
 
 import {
     getAllClientsWithPaymentsIn2008,
-    getAllPaymentsWithPaypaln2008
+    getAllPaymentsWithPaypaln2008,
+    getAllTypesOfPayment
 } from "./module/payments.js"
 
-console.log(await getAll());
+// console.log(await getAll());
 
+
+import {
+    getAllOrnamentalProducts
+} from "./module/products.js"
+
+// console.log(await getAllOrnamentalProducts());
