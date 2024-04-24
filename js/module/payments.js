@@ -32,7 +32,7 @@ export const getAllPaymentsWithPaypaln2008 = async () => {
             dataUpdate.push(val);
         }
     });
-    dataUpdate.sort((a, b) => b.amount - a.amount);
+    dataUpdate.sort((a, b) => b.total - a.total);
 
     return dataUpdate;
 };
@@ -50,6 +50,4 @@ export const getAllTypesOfPayment = async () => {
     let dataUpdatePayment = Array.from(dataUpdate);
 
     return dataUpdatePayment;
-};
-
-
+};  

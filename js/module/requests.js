@@ -38,7 +38,7 @@ export const getAllDiferenceOfTwoDays = async () => {
     let dataUpdate = [];
 
     data.forEach(val => {
-        // Convertir las fechas a objetos Date
+        
         let fechaEsperada = new Date(val.date_wait);
         let fechaEntrega = new Date(val.date_delivery);
         

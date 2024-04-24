@@ -19,7 +19,7 @@ import {
     getAllClientsFromMadrid
 } from "./module/clients.js";
 
-console.log(await getAllClientsFromMadrid());
+// console.log(await getAllClientsFromMadrid());
 
 import {
     getAllStatusesOfaRequest,
@@ -29,7 +29,7 @@ import {
     getAllOrdersDeliveredInJanuary
 } from "./module/requests.js"
 
-// console.log(await getAllOrdersDeliveredInJanuary());
+console.log(await getAllRejectedOrdersIn2009());
 
 import {
     getAllClientsWithPaymentsIn2008,
