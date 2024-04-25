@@ -17,10 +17,11 @@ import {
 import {
     getAllClientsFromSpain,
     getAllClientsFromMadrid,
-    getClientsEmploy
+    getClientsEmploy,
+    getClients 
 } from "./module/clients.js";
 
-console.log(await getClientsEmploy());
+console.log(await getClients ());
 
 import {
     getAllStatusesOfaRequest,
