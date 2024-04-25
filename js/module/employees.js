@@ -49,7 +49,16 @@ export const getAllEmployeesIsntSaleRepresentatives = async () => {
 }
 
 
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------- SEGUNDA PARTE --------------------------------------------------------------------------------------------------------------------------------------
+
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+export const getEmployeeNameAndLastName = async (code) => {
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}
+
 
 // Obtener la informacion de empleado por su codigo
 

@@ -30,18 +30,75 @@ export const getAllClientsFromMadrid = async () => {
 };
 
 
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------- SEGUNDA PARTE -----------------------------------------------------------------------------------------------------------------------
 
-// 7. Devuelve el nombre de los clientes y el nombre de sus representantes  junto con la ciudad de la oficina a la que pertenece
-
-import{
-    getEmployByCode
-} from "./employees.js"
-
+import { 
+    getEmployByCode,
+    getEmployeeNameAndLastName
+} from "./employees.js";
 
 import {
     getOfficesByCode
 } from "./offices.js"
+
+
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+export const getClients = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1:address1Client,
+            address2:address2Client,
+            city,
+            region:regionClients,
+            country:countryClients,
+            postal_code:postal_codeClients,
+            limit_credit,
+            id:idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        let [employ] = await getEmployeeNameAndLastName(code_employee_sales_manager);
+        let {
+            extension,
+            email,
+            code_boss,
+            position,
+            id: idEmploy,
+            name,
+            lastname1,
+            lastname2,
+            code_office,
+            employee_code,
+            ...employUpdate
+        } = employ;
+
+        let data = {...clientsUpdate, ...employUpdate};
+        let {
+            code_employee_sales_manager: codeEmployeeSalesManager,
+            ...dataUpdate       
+        } = data;
+
+        dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`;
+        clients[i] = dataUpdate;
+    }
+    return clients;
+};
+
+
+
+
+// 7. Devuelve el nombre de los clientes y el nombre de sus representantes  junto con la ciudad de la oficina a la que pertenece
+
+
 
 
 export const getClientsEmploy = async() =>{
