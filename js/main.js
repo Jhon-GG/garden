@@ -9,10 +9,11 @@ import {
 import {
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
-    getAllEmployeesIsntSaleRepresentatives
+    getAllEmployeesIsntSaleRepresentatives,
+    getAll2
 } from "./module/employees.js";
 
-// console.log(await getAllEmployeesIsntSaleRepresentatives());
+console.log(await getAll());
 
 import {
     getAllClientsFromSpain,
@@ -21,7 +22,7 @@ import {
     getClients 
 } from "./module/clients.js";
 
-console.log(await getClients ());
+// console.log(await getClients ());
 
 import {
     getAllStatusesOfaRequest,

@@ -169,3 +169,9 @@ export const getClientsEmploy = async() =>{
     // ]
     return clients;
 }
+
+
+// --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------
+
+// 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
+

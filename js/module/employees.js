@@ -86,3 +86,19 @@ export const getAll = async()=>{
     }
     return dataEmployees;
 }
+
+
+// --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------
+
+import{
+    get
+}
+
+// 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
+
+export const getAll2 = async () => {
+    let [dataEmployees] = getAll2();
+    let employee_code = dataEmployees.map(element => {
+
+    })
+}
