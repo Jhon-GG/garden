@@ -525,12 +525,142 @@ queryAboutTable01.addEventListener("click", async (e) => {
     }
 });
 
+// -----------------------------Ejercicio 2----------------------------------------------------------------
+
+import { getClientsThatMakePaymentsAndSalesRepresentatives  } from "./module/clients.js";
+const queryAboutTable02 = document.querySelector("#queryAboutTable02");
+queryAboutTable02.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable02.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsThatMakePaymentsAndSalesRepresentatives ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes que hayan hecho pagos y sus representantes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 3----------------------------------------------------------------
+
+import { getClientsWithoutPaymentsAndWithoutSalesRepresentatives  } from "./module/clients.js";
+const queryAboutTable03 = document.querySelector("#queryAboutTable03");
+queryAboutTable03.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable03.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithoutPaymentsAndWithoutSalesRepresentatives ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes que NO hayan hechos pagos y sus representantes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 4----------------------------------------------------------------
+
+import { getClientsWithPaymentsAndCityOfTheSalesRepresentatives  } from "./module/clients.js";
+const queryAboutTable04 = document.querySelector("#queryAboutTable04");
+queryAboutTable04.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable04.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithPaymentsAndCityOfTheSalesRepresentatives ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes que hayan hecho pagos y oficinas de sus representantes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Ciudad: </b>${val.city}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 5----------------------------------------------------------------
+
+import { getClientsWithoutPaymentsAndOfficeOfSaleRepresentative   } from "./module/clients.js";
+const queryAboutTable05 = document.querySelector("#queryAboutTable05");
+queryAboutTable05.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable05.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithoutPaymentsAndOfficeOfSaleRepresentative  ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes que no han hecho pagos y la ciudad de la oficina el representante</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                            <p><b>Ciudad: </b>${val.city}</p>
+                            <p><b>Nombre empleado: </b>${val.name_employee }</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+//------------------------- Ejercicio 6 ------------------------------------------------------------------------------------------------------------
 
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";
 const queryAboutTable07 = document.querySelector("#queryAboutTable07");
-queryAboutTable7.addEventListener("click", async(e)=>{
+queryAboutTable07.addEventListener("click", async(e)=>{
     let [,report__container] = queryAboutTable07.children
     if(!report__container.innerHTML){
         let data = await getClientsEmploy();
@@ -556,3 +686,61 @@ queryAboutTable7.addEventListener("click", async(e)=>{
 })
 
 
+// -----------------------------Ejercicio 8----------------------------------------------------------------
+
+import { getEmployeesWithBossesAdnTheBossOfThatBoss   } from "./module/employees.js";
+queryAboutTable08.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable08.children;
+    if (!report__container.innerHTML) {
+        let data = await getEmployeesWithBossesAdnTheBossOfThatBoss();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados con sus jefes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Nombre jefe: </b>${val.boss}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 9----------------------------------------------------------------
+// -----------------------------Ejercicio 10----------------------------------------------------------------
+
+import { getDelayedOrdersPayPalClients} from "./module/clients.js";
+const queryAboutTable010 = document.querySelector("#queryAboutTable010");
+queryAboutTable010.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable010.children
+    if(!report__container.innerHTML){
+        let data = await getDelayedOrdersPayPalClients();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>${val.client_name}</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre del cliente: </b>${val.client_name}</p>
+                        <p><b>Estado: </b>${val.status}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})

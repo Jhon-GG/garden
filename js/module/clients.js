@@ -485,6 +485,7 @@ export const getDelayedOrdersPayPalClients = async () => {
 
         let payments = await getAllStatusPayments(client.code_client); 
 
+
         for (let j = 0; j < payments.length; j++) {
             let payment = payments[j];
 
@@ -500,6 +501,7 @@ export const getDelayedOrdersPayPalClients = async () => {
 
     return clients;
 };
+
 
 
 
