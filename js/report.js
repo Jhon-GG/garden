@@ -239,6 +239,100 @@ queryAboutTable8.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 9----------------------------------------------------------------
+
+import { getAllRequestsOutOfTime } from "./module/requests.js";
+const queryAboutTable9 = document.querySelector("#queryAboutTable9");
+queryAboutTable9.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable9.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllRequestsOutOfTime();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Pedidos a destiempo</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Pedido Codigo: </b>${val.Codigo_pedido}</p>
+                        <p><b>Cliente Codigo: </b>${val.Codigo_cliente}</p>
+                        <p><b>Fecha Esperada: </b>${val.Fecha_esperada}</p>
+                        <p><b>Fecha Entrega: </b>${val.Fecha_entrega}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 10----------------------------------------------------------------
+
+import { getAllDiferenceOfTwoDays } from "./module/requests.js";
+const queryAboutTable10 = document.querySelector("#queryAboutTable10");
+queryAboutTable10.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable10.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllDiferenceOfTwoDays();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Pedidos entregados con anticipacion (2 días o  más)</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Pedido Codigo: </b>${val.Codigo_pedido}</p>
+                        <p><b>Cliente Codigo: </b>${val.Codigo_cliente}</p>
+                        <p><b>Fecha Esperada: </b>${val.Fecha_esperada}</p>
+                        <p><b>Fecha Entrega: </b>${val.Fecha_entrega}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 11----------------------------------------------------------------
+
+import { getAllRejectedOrdersIn2009 } from "./module/requests.js";
+const queryAboutTable11 = document.querySelector("#queryAboutTable11");
+queryAboutTable11.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable11.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllRejectedOrdersIn2009();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Pedidos rechazados en 2009</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Pedido Codigo: </b>${val.Codigo_pedido}</p>
+                        <p><b>Cliente Codigo: </b>${val.Codigo_cliente}</p>
+                        <p><b>Fecha Esperada: </b>${val.Fecha_esperada}</p>
+                        <p><b>Fecha Entrega: </b>${val.Fecha_entrega}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
 //------------------------- SEGUNDA PARTE ------------------------------------------------------------------------------------------------------------
 
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
