@@ -91,6 +91,38 @@ queryAboutTable3.addEventListener("click", async(e)=>{
     }
 })
 
+
+//------------------------- Ejercicio 4 ------------------------------------------------------------------------------------------------------------
+import { getBossFullNameAndEmail } from "./module/employees.js";
+const queryAboutTable4 = document.querySelector("#queryAboutTable4");
+queryAboutTable4.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable4.children
+    if(!report__container.innerHTML){
+        let data = await getBossFullNameAndEmail();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Empleados con jefe con codigo 7</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                        <p><b>Apellidos: </b>${val.apellidos}</p>
+                        <p><b>Email: </b>${val.email}</p>
+                        <p><b>Cargo: </b>${val.position}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";
