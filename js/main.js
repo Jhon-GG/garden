@@ -22,10 +22,12 @@ import {
     getClientsEmploy,
     getClientsWithNameAndLastNameOfTheSalesManager,
     getClientsThatMakePaymentsAndSalesRepresentatives,
-    // getClientsThatPayAndHaveSalesManager
+    // getClientsThatPayAndHaveSalesManager,
+    getClientsWithoutPaymentsAndWithoutSalesRepresentatives,
+    getClientsWithPaymentsAndCityOfTheSalesRepresentatives
 } from "./module/clients.js";
 
-console.log (await getClientsThatMakePaymentsAndSalesRepresentatives())
+console.log (await getClientsWithPaymentsAndCityOfTheSalesRepresentatives())
 
 import {
     getAllStatusesOfaRequest,

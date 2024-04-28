@@ -171,7 +171,150 @@ export const getClientsThatMakePaymentsAndSalesRepresentatives = async () => {
 };
 
 
+// 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
+export const getClientsWithoutPaymentsAndWithoutSalesRepresentatives = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithoutPayments = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+
+        let [pay] = await getPaymentsOfSalesRepresentatives(client_code);
+
+
+        if (!pay) {
+            let [employ] = await getEmployeesSalesRepresentatives(code_employee_sales_manager);
+            let {
+                extension,
+                email,
+                code_boss,
+                position,
+                id: idEmploy,
+                name,
+                lastname1,
+                lastname2,
+                code_office,
+                employee_code,
+                ...employUpdate
+            } = employ;
+
+            let dataUpdate = {
+                ...clientsUpdate,
+                ...employUpdate
+            };
+
+            dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`;
+            clientsWithoutPayments.push(dataUpdate);
+        }
+    }
+    return clientsWithoutPayments;
+};
+
+
+//  4.Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+
+export const getClientsWithPaymentsAndCityOfTheSalesRepresentatives = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithPayments = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        let [pay] = await getPaymentsOfSalesRepresentatives(client_code);
+
+
+        if (pay) {
+            let [employ] = await getEmployeesSalesRepresentatives(code_employee_sales_manager);
+            let {
+                extension,
+                email,
+                code_boss,
+                position,
+                id: idEmploy,
+                name,
+                lastname1,
+                lastname2,
+                code_office,
+                employee_code,
+                ...employUpdate
+            } = employ;
+
+            let {
+                code_client,
+                payment: paymentClients,
+                id_transaction: transactionClients,
+                date_payment,
+                total,
+                id: idPayments,
+                ...paymentsUpdate
+            } = pay;
+
+            let [office] = await getOfficesByCode(code_office);
+
+            if (office) {
+                let {
+                    country: countryOffice,
+                    region: regionOffice,
+                    postal_code: postal_codeOffice,
+                    movil,
+                    code_office,
+                    address1: address1Office,
+                    address2: address2Office,
+                    id: idOffice,
+                    ...officeUpdate
+                } = office;
+
+                let dataUpdate = {
+                    ...clientsUpdate,
+                    ...employUpdate,
+                    ...paymentsUpdate,
+                    ...officeUpdate
+                };
+
+                dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`;
+                clientsWithPayments.push(dataUpdate);
+            } 
+        }
+    }
+    return clientsWithPayments;
+};
 
 
 // 7. Devuelve el nombre de los clientes y el nombre de sus representantes  junto con la ciudad de la oficina a la que pertenece
