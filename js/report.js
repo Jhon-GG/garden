@@ -333,6 +333,100 @@ queryAboutTable11.addEventListener("click", async (e) => {
     }
 });
 
+
+// -----------------------------Ejercicio 12----------------------------------------------------------------
+
+import { getAllOrdersDeliveredInJanuary } from "./module/requests.js";
+const queryAboutTable12 = document.querySelector("#queryAboutTable12");
+queryAboutTable12.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable12.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllOrdersDeliveredInJanuary();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Pedidos entregados en enero</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Pedido Codigo: </b>${val.Codigo_pedido}</p>
+                        <p><b>Cliente Codigo: </b>${val.Codigo_cliente}</p>
+                        <p><b>Fecha Esperada: </b>${val.Fecha_esperada}</p>
+                        <p><b>Fecha Entrega: </b>${val.Fecha_entrega}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 13----------------------------------------------------------------
+
+import { getAllPaymentsWithPaypaln2008 } from "./module/payments.js";
+const queryAboutTable13 = document.querySelector("#queryAboutTable13");
+queryAboutTable13.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable13.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllPaymentsWithPaypaln2008();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Pagos por PayPal en 2008</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Codigo cliente: </b>${val.code_client}</p>
+                            <p><b>Pagos: </b>${val.payment}</p>
+                            <p><b>ID Transaccion: </b>${val.id_transaction}</p>
+                            <p><b>Total: </b>${val.total}</p>
+                            <p><b>ID: </b>${val.id}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 14----------------------------------------------------------------
+
+import { getAllTypesOfPayment } from "./module/payments.js";
+const queryAboutTable14 = document.querySelector("#queryAboutTable14");
+queryAboutTable14.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable14.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllTypesOfPayment();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Metodos de pago</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Método de Pago: </b>${val}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
 //------------------------- SEGUNDA PARTE ------------------------------------------------------------------------------------------------------------
 
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
