@@ -427,6 +427,70 @@ queryAboutTable14.addEventListener("click", async (e) => {
 });
 
 
+// -----------------------------Ejercicio 15----------------------------------------------------------------
+
+import { getAllOrnamentalProducts } from "./module/products.js";
+const queryAboutTable15 = document.querySelector("#queryAboutTable15");
+queryAboutTable15.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable15.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllOrnamentalProducts();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Productos de la gama Ornamentales</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Producto: </b>${val.name}</p>
+                            <p><b>Precio: </b>${val.price_sale}</p>
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 16----------------------------------------------------------------
+
+import { getAllClientsFromMadrid  } from "./module/clients.js";
+const queryAboutTable16 = document.querySelector("#queryAboutTable16");
+queryAboutTable16.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable16.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllClientsFromMadrid ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes de Madrid con representante con código 11 o 30</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Clientes: </b>${val.client_name}</p>
+                            <p><b>Ciudad: </b>${val.city}</p>
+                            <p><b>Codigo empleado:</b> ${val.code_employee_sales_manager}</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
 //------------------------- SEGUNDA PARTE ------------------------------------------------------------------------------------------------------------
 
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
