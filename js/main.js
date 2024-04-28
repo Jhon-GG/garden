@@ -24,10 +24,11 @@ import {
     getClientsThatMakePaymentsAndSalesRepresentatives,
     // getClientsThatPayAndHaveSalesManager,
     getClientsWithoutPaymentsAndWithoutSalesRepresentatives,
-    getClientsWithPaymentsAndCityOfTheSalesRepresentatives
+    getClientsWithPaymentsAndCityOfTheSalesRepresentatives,
+    getClientsWithoutPaymentsAndOfficeOfSaleRepresentative
 } from "./module/clients.js";
 
-console.log (await getClientsWithPaymentsAndCityOfTheSalesRepresentatives())
+console.log (await getClientsWithoutPaymentsAndOfficeOfSaleRepresentative())
 
 import {
     getAllStatusesOfaRequest,
