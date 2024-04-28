@@ -15,7 +15,7 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-// console.log(await getEmployeesWithBossesAdnTheBossOfThatBoss());
+console.log(await getAllEmployeesWithBossAndCodeSeven());
 
 
 import {
@@ -31,7 +31,7 @@ import {
     getDelayedOrdersPayPalClients
 } from "./module/clients.js";
 
-console.log (await getDelayedOrdersPayPalClients())
+// console.log (await getDelayedOrdersPayPalClients())
 
 import {
     getAllStatusesOfaRequest,
