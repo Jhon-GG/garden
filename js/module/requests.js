@@ -103,3 +103,12 @@ export const getAllOrdersDeliveredInJanuary  = async () => {
     });
     return dataUpdate;
 };
+
+
+// 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+
+export const getAllStatusPayments = async() =>{
+    let res = await fetch("http://localhost:5508/requests?status=Pendiente");
+    let data = await res.json();
+    return data;
+}

@@ -46,6 +46,10 @@ import {
     getPaymentsOfSalesRepresentatives,
 } from "./payments.js"
 
+import {
+    getAllStatusPayments
+}from "./requests.js"
+
 
 
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
@@ -467,6 +471,36 @@ export const getClientsEmploy = async() =>{
     // ]
     return clients;
 }
+
+
+// 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+
+
+export const getDelayedOrdersPayPalClients = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+
+    for (let i = 0; i < clients.length; i++) {
+        let client = clients[i];
+
+        let payments = await getAllStatusPayments(client.code_client); 
+
+        for (let j = 0; j < payments.length; j++) {
+            let payment = payments[j];
+
+            let dataUpdate = {
+
+                client_name: `${payment.name} ${payment.lastname1} ${payment.lastname2}`,
+                client_name: client.client_name,
+                status: payment.status, 
+            };
+            clients[i] = dataUpdate;
+        }
+    }
+
+    return clients;
+};
+
 
 
 // --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------

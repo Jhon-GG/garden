@@ -11,10 +11,12 @@ import {
     getBossFullNameAndEmail,
     getAllEmployeesIsntSaleRepresentatives,
     getAll2,
-    getAllEmployeesWithTheirBosses
+    getAllEmployeesWithTheirBosses,
+    getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-// console.log(await getAllEmployeesWithTheirBosses());
+// console.log(await getEmployeesWithBossesAdnTheBossOfThatBoss());
+
 
 import {
     getAllClientsFromSpain,
@@ -25,10 +27,11 @@ import {
     // getClientsThatPayAndHaveSalesManager,
     getClientsWithoutPaymentsAndWithoutSalesRepresentatives,
     getClientsWithPaymentsAndCityOfTheSalesRepresentatives,
-    getClientsWithoutPaymentsAndOfficeOfSaleRepresentative
+    getClientsWithoutPaymentsAndOfficeOfSaleRepresentative,
+    getDelayedOrdersPayPalClients
 } from "./module/clients.js";
 
-console.log (await getClientsWithoutPaymentsAndOfficeOfSaleRepresentative())
+console.log (await getDelayedOrdersPayPalClients())
 
 import {
     getAllStatusesOfaRequest,
