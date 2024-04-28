@@ -152,14 +152,101 @@ queryAboutTable5.addEventListener("click", async (e) => {
     }
 });
 
+// -----------------------------Ejercicio 6----------------------------------------------------------------
 
+import { getAllClientsFromSpain } from "./module/clients.js";
+const queryAboutTable6 = document.querySelector("#queryAboutTable6");
+queryAboutTable6.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable6.children
+    if(!report__container.innerHTML){
+        let data = await getAllClientsFromSpain();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Clientes Españoles</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Nombre: </b>${val.nombre}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
+// -----------------------------Ejercicio 7----------------------------------------------------------------
+
+import { getAllStatusesOfaRequest } from "./module/requests.js";
+const queryAboutTable7 = document.querySelector("#queryAboutTable7");
+queryAboutTable7.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable7.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllStatusesOfaRequest();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Estados de un Pedido</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Estado: </b>${val}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+// -----------------------------Ejercicio 8----------------------------------------------------------------
+
+import { getAllClientsWithPaymentsIn2008 } from "./module/payments.js";
+const queryAboutTable8 = document.querySelector("#queryAboutTable8");
+queryAboutTable8.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable8.children;
+    if (!report__container.innerHTML) {
+        let data = await getAllClientsWithPaymentsIn2008();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Pagos en 2008</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Codigo: </b>${val.codigo}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+//------------------------- SEGUNDA PARTE ------------------------------------------------------------------------------------------------------------
 
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";
-const queryAboutTable7 = document.querySelector("#queryAboutTable7");
+const queryAboutTable07 = document.querySelector("#queryAboutTable07");
 queryAboutTable7.addEventListener("click", async(e)=>{
-    let [,report__container] = queryAboutTable7.children
+    let [,report__container] = queryAboutTable07.children
     if(!report__container.innerHTML){
         let data = await getClientsEmploy();
         let plantilla = "";
