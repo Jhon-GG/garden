@@ -60,6 +60,14 @@ export const getEmployeeNameAndLastName = async (code) => {
 }
 
 
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+export const getEmployeesSalesRepresentatives = async (code) => {
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}
+
 // Obtener la informacion de empleado por su codigo
 
 export const getEmployByCode = async(code) =>{
@@ -68,31 +76,45 @@ export const getEmployByCode = async(code) =>{
     return dataClients;
 }
 
+
+export const getAllEmploy = async() =>{
+    let res = await fetch(`http://localhost:5502/employees`);
+    let data = await res.json();
+    return data;
+}
 //9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 
-export const getAll = async()=>{
+
+export const getAllEmployeesWithTheirBosses = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
-        let {code_boss} = dataEmployees[i]
-        let listBoss = [];
-        if(!code_boss) continue 
-        do{
-            let searchedBoss = async() => await getEmployByCode(code_boss)
-            let [boos] = await searchedBoss()
-            code_boss = boos.code_boss
-            listBoss.push(boos)
-        }while(code_boss)
-        dataEmployees[i].code_boss = listBoss;
+        let { code_boss, datos, extension, email, code_office, ...employee } = dataEmployees[i]; // Excluimos datos, extension, email, code_office
+        let hierarchy = {};
+        let j = 1;
+        if (!code_boss) continue;
+        do {
+            let [boss] = await getEmployByCode(code_boss);
+            if (!boss) break;
+            let bossKey = `code_boss_number_${j++}`; 
+            hierarchy[bossKey] = boss.name; 
+            code_boss = boss.code_boss;
+        } while (code_boss);
+        employee.code_boss = hierarchy;
+        dataEmployees[i] = employee; 
     }
     return dataEmployees;
 }
 
 
+
+
+
+
 // --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------
 
-import{
-    get
-}
+// import{
+//     get
+// }
 
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 

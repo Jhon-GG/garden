@@ -10,19 +10,22 @@ import {
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
     getAllEmployeesIsntSaleRepresentatives,
-    getAll2
+    getAll2,
+    getAllEmployeesWithTheirBosses
 } from "./module/employees.js";
 
-console.log(await getAll());
+// console.log(await getAllEmployeesWithTheirBosses());
 
 import {
     getAllClientsFromSpain,
     getAllClientsFromMadrid,
     getClientsEmploy,
-    getClients 
+    getClientsWithNameAndLastNameOfTheSalesManager,
+    getClientsThatMakePaymentsAndSalesRepresentatives,
+    // getClientsThatPayAndHaveSalesManager
 } from "./module/clients.js";
 
-// console.log(await getClients ());
+console.log (await getClientsThatMakePaymentsAndSalesRepresentatives())
 
 import {
     getAllStatusesOfaRequest,

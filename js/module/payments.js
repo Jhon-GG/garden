@@ -51,3 +51,14 @@ export const getAllTypesOfPayment = async () => {
 
     return dataUpdatePayment;
 };  
+
+
+// ------------------------------ SEGUNDA PARTE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+export const getPaymentsOfSalesRepresentatives = async (code) => {
+    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
+}

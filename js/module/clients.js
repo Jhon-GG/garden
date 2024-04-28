@@ -30,21 +30,27 @@ export const getAllClientsFromMadrid = async () => {
 };
 
 
-// --------------------------------------------------------- SEGUNDA PARTE -----------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------SEGUNDA PARTE -----------------------------------------------------------------------------------------------------------------------
 
 import { 
     getEmployByCode,
-    getEmployeeNameAndLastName
+    getEmployeeNameAndLastName,
+    getEmployeesSalesRepresentatives
 } from "./employees.js";
 
 import {
     getOfficesByCode
 } from "./offices.js"
 
+import {
+    getPaymentsOfSalesRepresentatives,
+} from "./payments.js"
+
+
 
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
-export const getClients = async () => {
+export const getClientsWithNameAndLastNameOfTheSalesManager = async () => {
     let res = await fetch("http://localhost:5501/clients");
     let clients = await res.json();
     for (let i = 0; i < clients.length; i++) {
@@ -92,6 +98,78 @@ export const getClients = async () => {
     }
     return clients;
 };
+
+
+
+
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+export const getClientsThatMakePaymentsAndSalesRepresentatives = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithPayments = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+
+        let [pay] = await getPaymentsOfSalesRepresentatives(client_code);
+
+        if (pay) {
+            let [employ] = await getEmployeesSalesRepresentatives(code_employee_sales_manager);
+            let {
+                extension,
+                email,
+                code_boss,
+                position,
+                id: idEmploy,
+                name,
+                lastname1,
+                lastname2,
+                code_office,
+                employee_code,
+                ...employUpdate
+            } = employ;
+
+            let {
+                payment: paymentClients,
+                id_transaction: transactionClients,
+                date_payment,
+                total,
+                id: idPayments,
+                ...paymentsUpdate
+            } = pay;
+
+            let dataUpdate = {
+                ...clientsUpdate,
+                ...employUpdate,
+                ...paymentsUpdate
+            };
+
+            dataUpdate.name_employee = `${name} ${lastname1} ${lastname2}`;
+            clientsWithPayments.push(dataUpdate);
+        }
+    }
+    return clientsWithPayments;
+};
+
 
 
 
