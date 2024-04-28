@@ -15,7 +15,7 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-console.log(await getBossFullNameAndEmail());
+console.log(await getAllEmployeesIsntSaleRepresentatives());
 
 
 import {
