@@ -630,5 +630,23 @@ export const clientsThatDontMakeAnOrder = async () => {
 //   ]
 
 
+// 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+
+export const clientsWithNoPaymentsAndNoOrders = async () => {
+
+    const clientsWithoutPayments = await clientsNoPayments();
+
+    const clientsWithoutOrders = await clientsThatDontMakeAnOrder();
+
+    const combinedClientsList = [...clientsWithoutPayments, ...clientsWithoutOrders];
+
+    const uniqueClientsList = combinedClientsList.filter((client, index, self) =>
+        index === self.findIndex(c => c.client_name === client.client_name)
+    );
+
+    return uniqueClientsList;
+};
+
+
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
