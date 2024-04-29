@@ -15,7 +15,7 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-console.log(await getAllEmployeesIsntSaleRepresentatives());
+// console.log(await getAllEmployeesIsntSaleRepresentatives());
 
 
 import {
@@ -28,10 +28,11 @@ import {
     getClientsWithoutPaymentsAndWithoutSalesRepresentatives,
     getClientsWithPaymentsAndCityOfTheSalesRepresentatives,
     getClientsWithoutPaymentsAndOfficeOfSaleRepresentative,
-    getDelayedOrdersPayPalClients
+    getDelayedOrdersPayPalClients,
+    clientsNoPayments
 } from "./module/clients.js";
 
-// console.log (await getDelayedOrdersPayPalClients())
+console.log (await clientsNoPayments())
 
 import {
     getAllStatusesOfaRequest,
