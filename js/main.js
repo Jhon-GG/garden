@@ -29,10 +29,11 @@ import {
     getClientsWithPaymentsAndCityOfTheSalesRepresentatives,
     getClientsWithoutPaymentsAndOfficeOfSaleRepresentative,
     getDelayedOrdersPayPalClients,
-    clientsNoPayments
+    clientsNoPayments,
+    clientsThatDontMakeAnOrder
 } from "./module/clients.js";
 
-console.log (await clientsNoPayments())
+console.log (await clientsThatDontMakeAnOrder())
 
 import {
     getAllStatusesOfaRequest,

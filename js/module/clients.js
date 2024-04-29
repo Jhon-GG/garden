@@ -47,7 +47,8 @@ import {
 } from "./payments.js"
 
 import {
-    getAllStatusPayments
+    getAllStatusPayments,
+    getAllRequests
 }from "./requests.js"
 
 
@@ -562,6 +563,71 @@ export const clientsNoPayments = async () => {
     }
     return clientsWithoutPayments;
 };
+
+// 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+
+export const clientsThatDontMakeAnOrder = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithoutOrder = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+        let requests = await getAllRequests(client_code);
+
+
+        if (requests.length === 0) {
+            clientsWithoutOrder.push(clientsUpdate);
+        }
+    }
+    return clientsWithoutOrder;
+};
+
+
+// [
+//     { client_name: 'Lasas S.A.' },
+//     { client_name: 'Club Golf Puerta del hierro' },
+//     { client_name: 'DaraDistribuciones' },
+//     { client_name: 'Madrileña de riegos' },
+//     { client_name: 'Lasas S.A.' },
+//     { client_name: 'Jardin de Flores' },
+//     { client_name: 'Flores Marivi' },
+//     { client_name: 'Flowers, S.A' },
+//     { client_name: 'Naturajardin' },
+//     { client_name: 'Americh Golf Management SL' },
+//     { client_name: 'Aloha' },
+//     { client_name: 'El Prat' },
+//     { client_name: 'Vivero Humanes' },
+//     { client_name: 'Fuenla City' },
+//     { client_name: 'Jardinerías Matías SL' },
+//     { client_name: 'Agrojardin' },
+//     { client_name: 'Top Campo' },
+//     { client_name: 'Jardineria Sara' },
+//     { client_name: 'Campohermoso' },
+//     { client_name: 'france telecom' },
+//     { client_name: 'Musée du Louvre' },
+//     { client_name: 'Tutifruti S.A' },
+//     { client_name: 'Flores S.L.' },
+//     { client_name: 'The Magic Garden' },
+//     { client_name: 'El Jardin Viviente S.L' }
+//   ]
 
 
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.

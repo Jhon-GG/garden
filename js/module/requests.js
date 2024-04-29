@@ -112,3 +112,13 @@ export const getAllStatusPayments = async() =>{
     let data = await res.json();
     return data;
 }
+
+// --------------------------------------- TERCERA PARTE -----------------------------------------------------------------------------------------------
+
+// 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+
+export const getAllRequests = async (code) => {
+    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`);
+    let dataRequests = await res.json();
+    return dataRequests;
+}
