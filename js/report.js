@@ -656,6 +656,37 @@ queryAboutTable05.addEventListener("click", async (e) => {
 
 //------------------------- Ejercicio 6 ------------------------------------------------------------------------------------------------------------
 
+import { getOfficesInFuenLabrada } from "./module/clients.js";
+const queryAboutTable06 = document.querySelector("#queryAboutTable06");
+queryAboutTable06.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable06.children
+    if(!report__container.innerHTML){
+        let data = await getOfficesInFuenLabrada();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                <div>Oficinas</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Codigo: </b>${val.Codigo_de_representantes}</p>
+                        <p><b>Direccion_principal: </b>${val.Direccion_principal}</p>
+                        <p><b>Direccion_secundaria: </b>${val.Direccion_secundaria}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+
+
+
 //------------------------- Ejercicio 7 ------------------------------------------------------------------------------------------------------------
 
 import { getClientsEmploy } from "./module/clients.js";
@@ -674,8 +705,9 @@ queryAboutTable07.addEventListener("click", async(e)=>{
                 </div>
                 <div class="card__body">
                     <div class="body__marck">
-                        <p><b>Nombre del empleado: </b>${val.name_employee}</p>
+                        <p><b>Nombre del representante: </b>${val.name_employee}</p>
                         <p><b>Ciudad: </b>${val.city}</p>
+                        <p><b>Clente: </b>${val.client_name}</p>
                     </div>
                 </div>
             </div>

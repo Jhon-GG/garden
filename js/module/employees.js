@@ -83,7 +83,17 @@ export const getAllEmploy = async() =>{
     return data;
 }
 
-// 8.Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
+
+
+// 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
+
+export const getCodeOfEmployeesOffice = async () => {
+    let res = await fetch(`http://localhost:5502/employees`)
+    let data = await res.json()
+    return data
+}
+
+// 8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
 
 export const getEmployeesWithBossesAdnTheBossOfThatBoss = async () => {
     let dataEmployees = await getAllEmploy();

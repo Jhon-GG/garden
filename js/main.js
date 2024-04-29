@@ -31,10 +31,11 @@ import {
     getDelayedOrdersPayPalClients,
     clientsNoPayments,
     clientsThatDontMakeAnOrder,
-    clientsWithNoPaymentsAndNoOrders
+    clientsWithNoPaymentsAndNoOrders,
+    getOfficesInFuenLabrada
 } from "./module/clients.js";
 
-console.log (await clientsWithNoPaymentsAndNoOrders())
+console.log (await getOfficesInFuenLabrada())
 
 import {
     getAllStatusesOfaRequest,

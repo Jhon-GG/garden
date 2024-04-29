@@ -42,3 +42,13 @@ export const getOfficesByCode = async(code) =>{
     let dataClients = await res.json();
     return dataClients;
 }
+
+
+// 6.
+
+export const getAllOffices = async() => {
+    let res = await fetch("http://localhost:5504/offices");
+    let data = await res.json()
+    return data;
+}
+
