@@ -853,6 +853,8 @@ queryAboutTable011.addEventListener("click", async (e) => {
 
 // -----------------------------Tercera Parte----------------------------------------------------------------
 
+// ---------------------------- Ejercicio 1 ------------------------------------------------------------------------
+
 import { clientsWithNoPayments  } from "./module/clients.js";
 const queryAboutTable3_1 = document.querySelector("#queryAboutTable3_1");
 queryAboutTable3_1.addEventListener("click", async (e) => {
@@ -865,7 +867,35 @@ queryAboutTable3_1.addEventListener("click", async (e) => {
             plantilla += `
                 <div class="report__card">
                     <div class="card__title">
-                        <div>Clientes</div>
+                        <div>Clientes que no han realizado ningun pago</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+// -----------------------------Ejercicio 2----------------------------------------------------------------
+
+import { clientsThatDontMakeAnOrder  } from "./module/clients.js";
+const queryAboutTable3_2 = document.querySelector("#queryAboutTable3_2");
+queryAboutTable3_2.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_2.children;
+    if (!report__container.innerHTML) {
+        let data = await clientsThatDontMakeAnOrder ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes que no han realizado ningun pedido</div>
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
