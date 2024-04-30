@@ -113,6 +113,18 @@ export const getAllStatusPayments = async() =>{
     return data;
 }
 
+
+
+// 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
+export const getDetailsOfRequest = async (code) => {
+    let res = await fetch(`http://localhost:5508/requests?code_request=${code}`)
+    let data = await res.json();
+    return data
+}
+
+
+
 // --------------------------------------- TERCERA PARTE -----------------------------------------------------------------------------------------------
 
 // 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
@@ -122,3 +134,4 @@ export const getAllRequests = async (code) => {
     let dataRequests = await res.json();
     return dataRequests;
 }
+

@@ -15,7 +15,7 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-console.log(await getAllEmployeesWithTheirBosses());
+// console.log(await getAllEmployeesWithTheirBosses());
 
 
 import {
@@ -61,3 +61,9 @@ import {
 } from "./module/products.js"
 
 // console.log(await getAllOrnamentalProducts());
+
+import {
+    listOfGamasProductsBoughtByAClient
+} from "./module/request_details.js"
+
+console.log (await listOfGamasProductsBoughtByAClient ());

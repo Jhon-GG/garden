@@ -535,6 +535,15 @@ export const getDelayedOrdersPayPalClients = async () => {
 };
 
 
+// 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
+
+export const getCodeOfClient = async (code) => {
+    let res = await fetch(`http://localhost:5501/clients?client_code=${code}`)
+    let dataClient = await res.json()
+    return dataClient
+}
+
 
 
 // --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------

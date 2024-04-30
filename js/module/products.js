@@ -14,3 +14,14 @@ export const getAllOrnamentalProducts = async () => {
     
     return dataUpdate;
 }
+
+
+// ------------------------ SEGUNDA PARTE --------------------------------------------------------------------------------------------------------
+
+// 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
+export const getCodeOfProducts = async (code) => {
+    let res = await fetch(`http://localhost:5506/products?code_product=${code}`)
+    let data = await res.json()
+    return data
+}
