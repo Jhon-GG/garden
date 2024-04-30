@@ -748,6 +748,44 @@ queryAboutTable08.addEventListener("click", async (e) => {
 });
 
 // -----------------------------Ejercicio 9----------------------------------------------------------------
+
+import { getAllEmployeesWithTheirBosses } from "./module/employees.js";
+
+const queryAboutTable09 = document.querySelector("#queryAboutTable09");
+queryAboutTable09.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable09.children;
+
+    if (!report__container.innerHTML) {
+        let data = await getAllEmployeesWithTheirBosses();
+        let plantilla = "";
+        console.log(data);
+
+        data.forEach(val => {
+            let jefesHtml = "";
+            if (val.jefes) {
+                jefesHtml = val.jefes.reverse().join(", "); 
+            }
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleado</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre del Empleado: </b>${val.fullName} </p>
+                            <p><b>Los jefes: </b>${jefesHtml}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
 // -----------------------------Ejercicio 10----------------------------------------------------------------
 
 import { getDelayedOrdersPayPalClients} from "./module/clients.js";

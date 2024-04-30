@@ -15,7 +15,7 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss
 } from "./module/employees.js";
 
-// console.log(await getAllEmployeesIsntSaleRepresentatives());
+console.log(await getAllEmployeesWithTheirBosses());
 
 
 import {
@@ -35,7 +35,7 @@ import {
     getOfficesInFuenLabrada
 } from "./module/clients.js";
 
-console.log (await getOfficesInFuenLabrada())
+// console.log (await getOfficesInFuenLabrada())
 
 import {
     getAllStatusesOfaRequest,

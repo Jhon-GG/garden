@@ -118,23 +118,23 @@ export const getEmployeesWithBossesAdnTheBossOfThatBoss = async () => {
 export const getAllEmployeesWithTheirBosses = async () => {
     let dataEmployees = await getAllEmploy();
     for (let i = 0; i < dataEmployees.length; i++) {
-        let { code_boss, datos, extension, email, code_office, ...employee } = dataEmployees[i]; // Excluimos datos, extension, email, code_office
-        let hierarchy = {};
-        let j = 1;
-        if (!code_boss) continue;
+        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
+        let bossNames = [];
+        let fullName = `${name} ${lastname1} ${lastname2}`; 
+        if (!code_boss) {
+            dataEmployees[i] = { fullName };
+            continue; 
+        }
         do {
             let [boss] = await getEmployByCode(code_boss);
             if (!boss) break;
-            let bossKey = `code_boss_number_${j++}`; 
-            hierarchy[bossKey] = boss.name; 
+            bossNames.push(boss.name); 
             code_boss = boss.code_boss;
         } while (code_boss);
-        employee.code_boss = hierarchy;
-        dataEmployees[i] = employee; 
+        dataEmployees[i] = { fullName, jefes: bossNames.reverse() };
     }
     return dataEmployees;
-}
-
+};
 
 
 
