@@ -550,7 +550,7 @@ export const getCodeOfClient = async (code) => {
 
 // 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
 
-export const clientsNoPayments = async () => {
+export const clientsWithNoPayments = async () => {
     let res = await fetch("http://localhost:5501/clients");
     let clients = await res.json();
     let clientsWithoutPayments = [];

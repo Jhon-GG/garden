@@ -31,7 +31,7 @@ import {
     getClientsWithPaymentsAndCityOfTheSalesRepresentatives,
     getClientsWithoutPaymentsAndOfficeOfSaleRepresentative,
     getDelayedOrdersPayPalClients,
-    clientsNoPayments,
+    clientsWithNoPayments,
     clientsThatDontMakeAnOrder,
     clientsWithNoPaymentsAndNoOrders,
     getOfficesInFuenLabrada,
