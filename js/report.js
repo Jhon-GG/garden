@@ -814,3 +814,35 @@ queryAboutTable010.addEventListener("click", async(e)=>{
         report__container.innerHTML = plantilla;
     }
 })
+
+
+
+// -----------------------------Ejercicio 11----------------------------------------------------------------
+
+
+import { listOfGamasProductsBoughtByAClient} from "./module/request_details.js";
+const queryAboutTable011 = document.querySelector("#queryAboutTable011");
+queryAboutTable011.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable011.children
+    if (!report__container.innerHTML) {
+        let data = await listOfGamasProductsBoughtByAClient();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>Gamas de producto que ha comprado un cliente</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                    <p><b>Cliente: </b>${val.client_name}</p>
+                    <p><b>Gama: </b>${val.gama}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
