@@ -940,3 +940,51 @@ queryAboutTable3_3.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+// ---------------------------- Ejercicio 4 ----------------------------------------------------------------
+
+import { getEmployeesWithoutOffices } from "./module/employees.js";
+const queryAboutTable3_4 = document.querySelector("#queryAboutTable3_4");
+
+queryAboutTable3_4.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_4.children;
+
+    if (!report__container.innerHTML) {
+        let data = await getEmployeesWithoutOffices();
+        console.log(data);
+
+        let plantilla = "";
+
+        if (data.length === 0) {
+            plantilla = `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados sin oficina asociada</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p>No hay empleados sin oficina</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            data.forEach(val => {
+                plantilla += `
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Empleado</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                                <p><b>Empleado sin Oficina: </b>${val.name}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        report__container.innerHTML = plantilla;
+    }
+});
