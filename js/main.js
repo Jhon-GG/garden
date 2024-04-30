@@ -12,10 +12,11 @@ import {
     getAllEmployeesIsntSaleRepresentatives,
     getAll2,
     getAllEmployeesWithTheirBosses,
-    getEmployeesWithBossesAdnTheBossOfThatBoss
+    getEmployeesWithBossesAdnTheBossOfThatBoss,
+    getEmployeesWithoutOffices
 } from "./module/employees.js";
 
-// console.log(await getAllEmployeesWithTheirBosses());
+console.log(await getEmployeesWithoutOffices());
 
 
 import {
@@ -66,4 +67,4 @@ import {
     listOfGamasProductsBoughtByAClient
 } from "./module/request_details.js"
 
-console.log (await listOfGamasProductsBoughtByAClient ());
+// console.log (await listOfGamasProductsBoughtByAClient ());

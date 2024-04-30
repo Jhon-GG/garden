@@ -44,11 +44,23 @@ export const getOfficesByCode = async(code) =>{
 }
 
 
-// 6.
+// 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
 
 export const getAllOffices = async() => {
     let res = await fetch("http://localhost:5504/offices");
     let data = await res.json()
     return data;
 }
+
+
+// ------------------------- TERCERA PARTE ------------------------------------------------------------------------------------------------------------
+
+// 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+
+export const getPaymentsWithSales = async (code) => {
+    let res = await fetch(`http://localhost:5504/offices?code_offices=${code}`);
+    let dataOffices = await res.json();
+    return dataOffices;
+}
+
 

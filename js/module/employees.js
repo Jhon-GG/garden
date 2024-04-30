@@ -142,9 +142,39 @@ export const getAllEmployeesWithTheirBosses = async () => {
 
 // --------------------------------------------- PARTE 3 -----------------------------------------------------------------------------------------------------------------------
 
-// import{
-//     get
-// }
+
+import { getPaymentsWithSales } from './offices.js';
+
+
+
+// 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+
+
+export const getEmployeesWithoutOffices = async () => {
+    let dataEmployees = await getPaymentsWithSales();
+
+    for (let i = 0; i < dataEmployees.length; i++) {
+        let { code_boss, name, lastname1, lastname2 } = dataEmployees[i];
+        let bossName = null;
+
+        if (code_boss) {
+            let [boss] = await getEmployByCode(code_boss);
+            if (boss) {
+                bossName = boss.name;
+            }
+        }
+
+        dataEmployees[i] = { name, lastname1, lastname2, boss: bossName };
+    }
+
+    let offices = await getPaymentsWithSales();
+    let officeCodes = offices.map(office => office.code_office);
+
+
+    dataEmployees = dataEmployees.filter(employee => !officeCodes.includes(employee.code_office));
+
+    return dataEmployees;
+};
 
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
