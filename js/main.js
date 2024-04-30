@@ -13,10 +13,11 @@ import {
     getAll2,
     getAllEmployeesWithTheirBosses,
     getEmployeesWithBossesAdnTheBossOfThatBoss,
-    getEmployeesWithoutOffices
+    getEmployeesWithoutOffices,
+    getEmployeesWithoutClients
 } from "./module/employees.js";
 
-console.log(await getEmployeesWithoutOffices());
+console.log(await getEmployeesWithoutClients());
 
 
 import {
@@ -33,10 +34,11 @@ import {
     clientsNoPayments,
     clientsThatDontMakeAnOrder,
     clientsWithNoPaymentsAndNoOrders,
-    getOfficesInFuenLabrada
+    getOfficesInFuenLabrada,
+    
 } from "./module/clients.js";
 
-// console.log (await getOfficesInFuenLabrada())
+// console.log (await getEmployeesWithoutClients())
 
 import {
     getAllStatusesOfaRequest,

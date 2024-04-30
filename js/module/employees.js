@@ -176,6 +176,37 @@ export const getEmployeesWithoutOffices = async () => {
     return dataEmployees;
 };
 
+
+
+// 5.Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado.
+
+import { getClientsWell } from './clients.js';
+
+
+export const getEmployeesWithoutClients = async () => {
+    let employees = await getCodeOfficeOfEmployees(); 
+    let clients = await getClientsWell();
+
+    if (clients.length > 0) {
+        let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
+        let employeesWithoutClient = employees.filter(employee => !clientEmployeeCodes.includes(employee.employee_code));
+
+        return employeesWithoutClient;
+    } else {
+        return []; // Devolver una lista vacía si no hay clientes
+    }
+};
+
+
+// ------ Funcion del 5to ejercicio -------------------------------------
+
+export const getCodeOfficeOfEmployees = async () => {
+    let res = await fetch(`http://localhost:5502/employees`)
+    let data = await res.json()
+    return data
+}
+
+
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
 export const getAll2 = async () => {

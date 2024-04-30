@@ -688,5 +688,16 @@ export const clientsWithNoPaymentsAndNoOrders = async () => {
 };
 
 
+
+// 5.Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado.
+
+export const getClientsWell = async () => {
+    let res = await fetch("http://localhost:5501/clients?code_employee_sales_manager");
+    let dataOffices = await res.json();
+    return dataOffices;
+}
+
+
+
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
