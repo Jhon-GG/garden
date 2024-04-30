@@ -33,7 +33,7 @@ import {
     getDelayedOrdersPayPalClients,
     clientsWithNoPayments,
     clientsThatDontMakeAnOrder,
-    clientsWithNoPaymentsAndNoOrders,
+    clientsWithouthPaymentsAndOrders,
     getOfficesInFuenLabrada,
     
 } from "./module/clients.js";

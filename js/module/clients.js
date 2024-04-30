@@ -672,9 +672,9 @@ export const clientsThatDontMakeAnOrder = async () => {
 
 // 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
 
-export const clientsWithNoPaymentsAndNoOrders = async () => {
+export const clientsWithouthPaymentsAndOrders = async () => {
 
-    const clientsWithoutPayments = await clientsNoPayments();
+    const clientsWithoutPayments = await clientsWithNoPayments();
 
     const clientsWithoutOrders = await clientsThatDontMakeAnOrder();
 

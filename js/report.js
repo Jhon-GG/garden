@@ -881,6 +881,8 @@ queryAboutTable3_1.addEventListener("click", async (e) => {
     }
 });
 
+
+
 // -----------------------------Ejercicio 2----------------------------------------------------------------
 
 import { clientsThatDontMakeAnOrder  } from "./module/clients.js";
@@ -896,6 +898,36 @@ queryAboutTable3_2.addEventListener("click", async (e) => {
                 <div class="report__card">
                     <div class="card__title">
                         <div>Clientes que no han realizado ningun pedido</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Cliente Nombre: </b>${val.client_name}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
+
+
+
+// ---------------------------- Ejercicio 3 ----------------------------------------------------------------
+
+import { clientsWithouthPaymentsAndOrders } from "./module/clients.js";
+const queryAboutTable3_3 = document.querySelector("#queryAboutTable3_3");
+queryAboutTable3_3.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_3.children;
+    if (!report__container.innerHTML) {
+        let data = await clientsWithouthPaymentsAndOrders ();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes sin pago ni pedido</div>
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
