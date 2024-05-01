@@ -1018,3 +1018,34 @@ queryAboutTable3_5.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+// ---------------------------- Ejercicio 6 ----------------------------------------------------------------
+
+
+import { getEmployeesWithoutAssociatedClients } from "./module/employees.js";
+const queryAboutTable3_6 = document.querySelector("#queryAboutTable3_6");
+queryAboutTable3_6.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_6.children;
+    if (!report__container.innerHTML) {
+        let data = await getEmployeesWithoutAssociatedClients();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Empleados que no tienen cliente asociado junto con su oficina</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Nombre: </b>${val.name} ${val.lastname1} ${val.lastname2}</p>
+                            <p><b>Oficina: </b>${val.code_office} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
