@@ -18,7 +18,7 @@ import {
     getEmployeesWithoutAssociatedClients
 } from "./module/employees.js";
 
-console.log(await getEmployeesWithoutAssociatedClients());
+console.log(await getEmployeesWithoutClients());
 
 
 import {

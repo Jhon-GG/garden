@@ -191,10 +191,14 @@ export const getEmployeesWithoutClients = async () => {
         let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
         let employeesWithoutClient = employees.filter(employee => !clientEmployeeCodes.includes(employee.employee_code));
 
-        return employeesWithoutClient;
-    } else {
-        return []; // Devolver una lista vacía si no hay clientes
-    }
+        let simplifiedData = employeesWithoutClient.map(employee => ({
+            name: employee.name,
+            lastname1: employee.lastname1,
+            lastname2: employee.lastname2
+        }));
+
+        return simplifiedData;
+    } 
 };
 
 
