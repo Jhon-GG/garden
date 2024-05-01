@@ -64,3 +64,12 @@ export const getPaymentsWithSales = async (code) => {
 }
 
 
+// 7. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
+
+export const listOffices = async (code) => {
+    let res = await fetch ("http://localhost:5504/offices?code_office");
+    let data = await res.json();
+    return data;
+}
+
+

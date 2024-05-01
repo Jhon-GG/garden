@@ -15,10 +15,11 @@ import {
     getEmployeesWithBossesAdnTheBossOfThatBoss,
     getEmployeesWithoutOffices,
     getEmployeesWithoutClients,
-    getEmployeesWithoutAssociatedClients
+    getEmployeesWithoutAssociatedClients,
+    getEmployeesWithoutAnOfficeAndAssociatedClient
 } from "./module/employees.js";
 
-console.log(await getEmployeesWithoutClients());
+console.log(await getEmployeesWithoutAnOfficeAndAssociatedClient());
 
 
 import {
