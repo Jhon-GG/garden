@@ -14,10 +14,11 @@ import {
     getAllEmployeesWithTheirBosses,
     getEmployeesWithBossesAdnTheBossOfThatBoss,
     getEmployeesWithoutOffices,
-    getEmployeesWithoutClients
+    getEmployeesWithoutClients,
+    getEmployeesWithoutAssociatedClients
 } from "./module/employees.js";
 
-console.log(await getEmployeesWithoutClients());
+console.log(await getEmployeesWithoutAssociatedClients());
 
 
 import {

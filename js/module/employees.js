@@ -207,6 +207,37 @@ export const getCodeOfficeOfEmployees = async () => {
 }
 
 
+
+
+// 6. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan.
+
+export const getEmployeesWithoutAssociatedClients = async () => {
+    let employees = await getCodeOfficeOfEmployees(); 
+    let clients = await getClientsWell();
+
+    if (clients.length > 0) {
+        let clientEmployeeCodes = clients.map(client => client.code_employee_sales_manager); 
+
+        let employeesWithoutClient = employees.filter(employee => {
+
+            return !clientEmployeeCodes.includes(employee.employee_code);
+        });
+
+
+        let offices = employeesWithoutClient.map(employee => {
+            return {
+                name: employee.name,
+                lastname1: employee.lastname1,
+                lastname2: employee.lastname2,
+                code_office: employee.code_office
+            };
+        });
+
+        return offices;
+    } 
+};
+
+
 // 12. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
 
 export const getAll2 = async () => {
