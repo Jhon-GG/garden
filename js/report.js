@@ -1099,3 +1099,34 @@ queryAboutTable3_7.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+// ---------------------------- Ejercicio 8 ----------------------------------------------------------------
+
+
+import { getProductsThatNeverHadBeenOrdered } from "./module/products.js";
+const queryAboutTable3_8 = document.querySelector("#queryAboutTable3_8");
+queryAboutTable3_8.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_8.children;
+    if (!report__container.innerHTML) {
+        let data = await getProductsThatNeverHadBeenOrdered();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Productos qu enunca han aparecido en un pedido</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>Codigo Producto: </b>${val.code_product} </p>
+                            <p><b>Nombre: </b>${val.name} </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+});
