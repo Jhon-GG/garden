@@ -19,7 +19,7 @@ import {
     getEmployeesWithoutAnOfficeAndAssociatedClient
 } from "./module/employees.js";
 
-console.log(await getEmployeesWithoutAnOfficeAndAssociatedClient());
+// console.log(await getEmployeesWithoutAnOfficeAndAssociatedClient());
 
 
 import {
@@ -62,10 +62,11 @@ import {
 
 
 import {
-    getAllOrnamentalProducts
+    getAllOrnamentalProducts,
+    getProductsThatNeverHadBeenOrdered
 } from "./module/products.js"
 
-// console.log(await getAllOrnamentalProducts());
+console.log(await getProductsThatNeverHadBeenOrdered());
 
 import {
     listOfGamasProductsBoughtByAClient

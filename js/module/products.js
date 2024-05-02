@@ -25,3 +25,35 @@ export const getCodeOfProducts = async (code) => {
     let data = await res.json()
     return data
 }
+
+
+
+// ------------------------ TERCERA PARTE --------------------------------------------------------------------------------------------------------
+
+// 8.Devuelve un listado de los productos que nunca han aparecido en un pedido.
+
+export const getProductsThatNeverHadBeenOrdered = async () => {
+
+    let resProducts = await fetch("http://localhost:5506/products");
+    let products = await resProducts.json();
+
+
+    let resRequestDetails = await fetch("http://localhost:5507/request_details");
+    let requestDetails = await resRequestDetails.json();
+
+
+    let orderedProductCodes = requestDetails.map(detail => detail.product_code);
+
+
+    let productsNeverOrdered = products.filter(product => !orderedProductCodes.includes(product.code_product));
+
+
+    let relevantData = productsNeverOrdered.map(product => {
+        return {
+            code_product: product.code_product,
+            name: product.name
+        };
+    });
+
+    return relevantData;
+};
