@@ -63,10 +63,11 @@ import {
 
 import {
     getAllOrnamentalProducts,
-    getProductsThatNeverHadBeenOrdered
+    getProductsThatNeverHadBeenOrdered,
+    getProductsThatNeverHadBeenInARequest
 } from "./module/products.js"
 
-console.log(await getProductsThatNeverHadBeenOrdered());
+console.log(await getProductsThatNeverHadBeenInARequest());
 
 import {
     listOfGamasProductsBoughtByAClient

@@ -57,3 +57,41 @@ export const getProductsThatNeverHadBeenOrdered = async () => {
 
     return relevantData;
 };
+
+
+// 9. Devuelve un listado de los productos que nunca han aparecido en un pedido. El resultado debe mostrar el nombre, la descripción y la imagen del producto.
+
+
+export const getProductsThatNeverHadBeenInARequest = async () => {
+
+
+    let resProducts = await fetch("http://localhost:5506/products");
+    let products = await resProducts.json();
+
+
+    let resRequestDetails = await fetch("http://localhost:5507/request_details");
+    let requestDetails = await resRequestDetails.json();
+
+
+    let orderedProductCodes = requestDetails.map(detail => detail.product_code);
+
+
+    let productsNeverOrdered = products.filter(product => !orderedProductCodes.includes(product.code_product));
+
+
+    let resGama = await fetch("http://localhost:5503/gama"); 
+    let gamaData = await resGama.json();
+
+
+    let relevantData = productsNeverOrdered.map(product => {
+        let gamaInfo = gamaData.find(gama => gama.gama === product.gama); 
+        return {
+            code_product: product.code_product,
+            name: product.name,
+            description: gamaInfo ? gamaInfo.description_text : "Descripción no disponible",
+            image: gamaInfo ? gamaInfo.imagen : "Imagen no disponible"
+        };
+    });
+
+    return relevantData;
+};
