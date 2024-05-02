@@ -63,3 +63,12 @@ export const getPaymentsOfSalesRepresentatives = async (code) => {
     let dataClients = await res.json();
     return dataClients;
 }
+
+
+// 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+
+export const getAllPayments = async () => {
+    let res = await fetch("http://localhost:5505/payments");
+    let data = await res.json();
+    return data;
+};

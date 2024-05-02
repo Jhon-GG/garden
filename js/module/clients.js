@@ -46,11 +46,13 @@ import {
 
 import {
     getPaymentsOfSalesRepresentatives,
+    getAllPayments
 } from "./payments.js"
 
 import {
     getAllStatusPayments,
-    getAllRequests
+    getAllRequests,
+    getListOfAllRequests
 }from "./requests.js"
 
 
@@ -696,6 +698,92 @@ export const getClientsWell = async () => {
     let dataOffices = await res.json();
     return dataOffices;
 }
+
+
+
+// 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
+
+
+export const getClientsWithOrders = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithOrder = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+
+        let requests = await getListOfAllRequests(client_code);
+
+
+        if (requests.length > 0) {
+            clientsWithOrder.push(clientsUpdate);
+        }
+    }
+    return clientsWithOrder;
+};
+
+// Funcion ejercicio 11
+
+
+export const getClientsWithOrderNoPayments = async () => {
+    let res = await fetch("http://localhost:5501/clients");
+    let clients = await res.json();
+    let clientsWithOrderNoPayments = [];
+
+    for (let i = 0; i < clients.length; i++) {
+        let {
+            client_code,
+            contact_name,
+            contact_lastname,
+            phone,
+            fax,
+            address1: address1Client,
+            address2: address2Client,
+            city,
+            region: regionClients,
+            country: countryClients,
+            postal_code: postal_codeClients,
+            limit_credit,
+            id: idClients,
+            code_employee_sales_manager,
+            ...clientsUpdate
+        } = clients[i];
+
+
+        let requests = await getListOfAllRequests(client_code);
+
+
+        let [pay] = await getPaymentsOfSalesRepresentatives(client_code);
+
+
+        if (requests.length > 0 && !pay) {
+            clientsWithOrderNoPayments.push(clientsUpdate);
+        }
+    }
+
+    if (clientsWithOrderNoPayments.length === 0) {
+        return "No hay clientes que han realizado su pedido y no han pagado";
+    }
+
+    return clientsWithOrderNoPayments;
+};
 
 
 

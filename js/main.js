@@ -37,10 +37,12 @@ import {
     clientsThatDontMakeAnOrder,
     clientsWithouthPaymentsAndOrders,
     getOfficesInFuenLabrada,
+    getClientsWithOrders,
+    getClientsWithOrderNoPayments
     
 } from "./module/clients.js";
 
-// console.log (await getEmployeesWithoutClients())
+console.log (await getClientsWithOrderNoPayments())
 
 import {
     getAllStatusesOfaRequest,
@@ -67,7 +69,7 @@ import {
     getProductsThatNeverHadBeenInARequest
 } from "./module/products.js"
 
-console.log(await getProductsThatNeverHadBeenInARequest());
+// console.log(await getProductsThatNeverHadBeenInARequest());
 
 import {
     listOfGamasProductsBoughtByAClient
