@@ -10,16 +10,16 @@ import {
     getAllEmployeesWithBossAndCodeSeven,
     getBossFullNameAndEmail,
     getAllEmployeesIsntSaleRepresentatives,
-    getAll2,
     getAllEmployeesWithTheirBosses,
     getEmployeesWithBossesAdnTheBossOfThatBoss,
     getEmployeesWithoutOffices,
     getEmployeesWithoutClients,
     getEmployeesWithoutAssociatedClients,
-    getEmployeesWithoutAnOfficeAndAssociatedClient
+    getEmployeesWithoutAnOfficeAndAssociatedClient,
+    getEmployeesWithoutAssociatedClientsAndBossNames
 } from "./module/employees.js";
 
-// console.log(await getEmployeesWithoutAnOfficeAndAssociatedClient());
+console.log(await getEmployeesWithoutAssociatedClientsAndBossNames());
 
 
 import {
@@ -42,7 +42,7 @@ import {
     
 } from "./module/clients.js";
 
-console.log (await getClientsWithOrderNoPayments())
+// console.log (await getClientsWithOrderNoPayments())
 
 import {
     getAllStatusesOfaRequest,
