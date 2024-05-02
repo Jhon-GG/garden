@@ -1164,3 +1164,54 @@ queryAboutTable3_9.addEventListener("click", async (e) => {
         report__container.innerHTML = plantilla;
     }
 });
+
+
+
+
+// ---------------------------- Ejercicio 11 ----------------------------------------------------------------
+
+
+import { getClientsWithOrderNoPayments } from "./module/clients.js";
+
+const queryAboutTable3_11 = document.querySelector("#queryAboutTable3_11");
+queryAboutTable3_11.addEventListener("click", async (e) => {
+    let [, report__container] = queryAboutTable3_11.children;
+    if (!report__container.innerHTML) {
+        let data = await getClientsWithOrderNoPayments();
+        let plantilla = "";
+
+        if (typeof data === "string") {
+
+            plantilla = `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>Clientes</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p>${data}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+
+            data.forEach(val => {
+                plantilla += `
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>Clientes que han realizado pedidos pero no pagos</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                                <p><b>Nombre cliente: </b>${val.client_name}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        report__container.innerHTML = plantilla;
+    }
+});
