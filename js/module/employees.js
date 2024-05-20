@@ -194,7 +194,8 @@ export const getEmployeesWithoutClients = async () => {
         let simplifiedData = employeesWithoutClient.map(employee => ({
             name: employee.name,
             lastname1: employee.lastname1,
-            lastname2: employee.lastname2
+            lastname2: employee.lastname2,
+            code_office:employee.code_office
         }));
 
         return simplifiedData;
