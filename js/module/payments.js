@@ -1,7 +1,7 @@
 // 8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos.
 
 export const getAllClientsWithPaymentsIn2008 = async () => {
-    let res = await fetch("http://localhost:5505/payments");
+    let res = await fetch("http://localhost:5375/payments");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -22,7 +22,7 @@ export const getAllClientsWithPaymentsIn2008 = async () => {
 // 13. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
 
 export const getAllPaymentsWithPaypaln2008 = async () => {
-    let res = await fetch("http://localhost:5505/payments?payment=PayPal");
+    let res = await fetch("http://localhost:5375/payments?payment=PayPal");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -40,7 +40,7 @@ export const getAllPaymentsWithPaypaln2008 = async () => {
 // 14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
 
 export const getAllTypesOfPayment = async () => {
-    let res = await fetch("http://localhost:5505/payments");
+    let res = await fetch("http://localhost:5375/payments");
     let data = await res.json();
     let dataUpdate = new Set();
 
@@ -59,7 +59,7 @@ export const getAllTypesOfPayment = async () => {
 // 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getPaymentsOfSalesRepresentatives = async (code) => {
-    let res = await fetch(`http://localhost:5505/payments?code_client=${code}`);
+    let res = await fetch(`http://localhost:5375/payments?code_client=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -68,7 +68,7 @@ export const getPaymentsOfSalesRepresentatives = async (code) => {
 // 11. Devuelve un listado con los clientes que han realizado algún pedido pero no han realizado ningún pago.
 
 export const getAllPayments = async () => {
-    let res = await fetch("http://localhost:5505/payments");
+    let res = await fetch("http://localhost:5375/payments");
     let data = await res.json();
     return data;
 };

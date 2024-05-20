@@ -1,7 +1,7 @@
 // 15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
 
 export const getAllOrnamentalProducts = async () => {
-    let res = await fetch("http://localhost:5506/products?gama=Ornamentales");
+    let res = await fetch("http://localhost:5376/products?gama=Ornamentales");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -38,7 +38,7 @@ export const getProductsThatNeverHadBeenOrdered = async () => {
     let products = await resProducts.json();
 
 
-    let resRequestDetails = await fetch("http://localhost:5507/request_details");
+    let resRequestDetails = await fetch("http://localhost:5377/request_details");
     let requestDetails = await resRequestDetails.json();
 
 
@@ -69,7 +69,7 @@ export const getProductsThatNeverHadBeenInARequest = async () => {
     let products = await resProducts.json();
 
 
-    let resRequestDetails = await fetch("http://localhost:5507/request_details");
+    let resRequestDetails = await fetch("http://localhost:5377/request_details");
     let requestDetails = await resRequestDetails.json();
 
 
