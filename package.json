@@ -7,19 +7,19 @@
   "scripts": {
     "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests & npm run dev", 
     "dev": "node --watch js/main.js",
-    "clients": "json-server js/db/clients.json -p 5371",
-    "employees": "json-server js/db/employees.json -p 5372",
-    "gama": "json-server js/db/gama.json -p 5373",
-    "offices": "json-server js/db/offices.json -p 5374",
-    "payments": "json-server js/db/payments.json -p 5375",
-    "products": "json-server js/db/products.json -p 5376",
-    "request_details": "json-server js/db/request_details.json -p 5377",
-    "requests": "json-server js/db/requests.json -p 5378"
+    "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5371",
+    "employees": "json-server -h 172.16.101.146 js/db/employees.json -p 5372",
+    "gama": "json-server -h 172.16.101.146 js/db/gama.json -p 5373",
+    "offices": "json-server -h 172.16.101.146 js/db/offices.json -p 5374",
+    "payments": "json-server -h 172.16.101.146 js/db/payments.json -p 5375",
+    "products": "json-server -h 172.16.101.146 js/db/products.json -p 5376",
+    "request_details": "json-server -h 172.16.101.146 js/db/request_details.json -p 5377",
+    "requests": "json-server -h 172.16.101.146 js/db/requests.json -p 5378"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^1.0.0-alpha.23"
+    "json-server": "^1.0.0-alpha.23" 
   }
 }

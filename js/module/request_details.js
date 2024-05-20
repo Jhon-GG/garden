@@ -14,7 +14,7 @@ import {
 // 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
 
 export const listOfGamasProductsBoughtByAClient = async () => {
-    let res = await fetch(`http://localhost:5377/request_details`)
+    let res = await fetch(`http://172.16.101.146:5377/request_details`)
     let data = await res.json();
     let clientsArray = []
     for (let i = 0; i < data.length; i++) {

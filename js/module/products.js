@@ -1,7 +1,7 @@
 // 15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
 
 export const getAllOrnamentalProducts = async () => {
-    let res = await fetch("http://localhost:5376/products?gama=Ornamentales");
+    let res = await fetch("http://172.16.101.146:5376/products?gama=Ornamentales");
     let data = await res.json();
     let dataUpdate = [];
 
@@ -21,7 +21,7 @@ export const getAllOrnamentalProducts = async () => {
 // 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
 
 export const getCodeOfProducts = async (code) => {
-    let res = await fetch(`http://localhost:5506/products?code_product=${code}`)
+    let res = await fetch(`http://172.16.101.146:5506/products?code_product=${code}`)
     let data = await res.json()
     return data
 }
@@ -34,11 +34,11 @@ export const getCodeOfProducts = async (code) => {
 
 export const getProductsThatNeverHadBeenOrdered = async () => {
 
-    let resProducts = await fetch("http://localhost:5506/products");
+    let resProducts = await fetch("http://172.16.101.146:5506/products");
     let products = await resProducts.json();
 
 
-    let resRequestDetails = await fetch("http://localhost:5377/request_details");
+    let resRequestDetails = await fetch("http://172.16.101.146:5377/request_details");
     let requestDetails = await resRequestDetails.json();
 
 
@@ -65,11 +65,11 @@ export const getProductsThatNeverHadBeenOrdered = async () => {
 export const getProductsThatNeverHadBeenInARequest = async () => {
 
 
-    let resProducts = await fetch("http://localhost:5506/products");
+    let resProducts = await fetch("http://172.16.101.146:5506/products");
     let products = await resProducts.json();
 
 
-    let resRequestDetails = await fetch("http://localhost:5377/request_details");
+    let resRequestDetails = await fetch("http://172.16.101.146:5377/request_details");
     let requestDetails = await resRequestDetails.json();
 
 
@@ -79,7 +79,7 @@ export const getProductsThatNeverHadBeenInARequest = async () => {
     let productsNeverOrdered = products.filter(product => !orderedProductCodes.includes(product.code_product));
 
 
-    let resGama = await fetch("http://localhost:5503/gama"); 
+    let resGama = await fetch("http://172.16.101.146:5503/gama"); 
     let gamaData = await resGama.json();
 
 
