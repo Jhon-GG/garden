@@ -18,7 +18,7 @@ export const getAllEmployeesWithBossAndCodeSeven = async () => {
 // 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa
 
 export const getBossFullNameAndEmail = async () => {
-    let res = await fetch("http://172.16.101.146:5502/employees");
+    let res = await fetch("http://172.16.101.146:5372/employees");
     let data = await res.json();
     let filteredData = data.filter(val => val.code_boss == null);
     return filteredData.map(val => ({
@@ -32,7 +32,7 @@ export const getBossFullNameAndEmail = async () => {
 // 5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas
 
 export const getAllEmployeesIsntSaleRepresentatives = async () => {
-    let res = await fetch("http://172.16.101.146:5502/employees?position_ne=Representante%20Ventas")
+    let res = await fetch("http://172.16.101.146:5372/employees?position_ne=Representante%20Ventas")
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
@@ -51,7 +51,7 @@ export const getAllEmployeesIsntSaleRepresentatives = async () => {
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
 export const getEmployeeNameAndLastName = async (code) => {
-    let res = await fetch(`http://172.16.101.146:5502/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5372/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -63,7 +63,7 @@ export const getEmployeeNameAndLastName = async (code) => {
 // 5. Devuelve el nombre de los clientes que no hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
 
 export const getEmployeesSalesRepresentatives = async (code) => {
-    let res = await fetch(`http://172.16.101.146:5502/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5372/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }
@@ -71,7 +71,7 @@ export const getEmployeesSalesRepresentatives = async (code) => {
 // Obtener la informacion de empleado por su codigo
 
 export const getEmployByCode = async(code) =>{
-    let res = await fetch(`http://172.16.101.146:5502/employees?employee_code=${code}`);
+    let res = await fetch(`http://172.16.101.146:5372/employees?employee_code=${code}`);
     let dataClients = await res.json();
     return dataClients;
 }

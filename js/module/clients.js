@@ -16,7 +16,7 @@ export const getAllClientsFromSpain = async () => {
 // 16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
 
 export const getAllClientsFromMadrid = async () => {
-    let res = await fetch("http://172.16.101.146:5501/clients?city=Madrid");
+    let res = await fetch("http://172.16.101.146:5371/clients?city=Madrid");
     let data = await res.json();
     let dataUpdate = [];
 
