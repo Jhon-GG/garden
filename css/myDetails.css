@@ -1,4 +1,4 @@
-details{
+/* details{
     margin-left: var(--layout-box-x);
     margin-right: var(--layout-box-x);
     margin-bottom: var(--layout-box-y);
@@ -9,7 +9,6 @@ details{
     height: 50px;
     white-space: nowrap; 
     display: flex;
-    /* background: red; */
     color: var(--color2);
     align-items: center;
 }
@@ -47,6 +46,5 @@ details[open] summary {
     border-radius: 10px;
 }
 details {
-    /* background: red; */
     border-radius: 5px;
-}
+} */

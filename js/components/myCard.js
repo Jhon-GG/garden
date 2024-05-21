@@ -1,4 +1,5 @@
 import {getAllOfficesCodeAndCity,
+    getAllOfficesFromSpainCityAndMobile
 } from "../module/offices.js"
 
 
@@ -36,12 +37,37 @@ async getAllOfficesCodeAndCityDesign(){
 }
 
 
+ // 2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España.
+
+ async getAllOfficesFromSpainCityAndMobileDesign(){
+    let data = await getAllOfficesFromSpainCityAndMobile();
+    data.forEach(val => {
+        this.shadowRoot.innerHTML += /*html*/`
+            <div class="report__card">
+                <div class="card__title">
+                    <div>Oficces 2</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                    <p><b>ID: </b>${val.id}</p>
+                    <p><b>Ciudad: </b>${val.ciudad}</p>
+                     <p><b>Telefono: </b>${val.telefono}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+
 
 static get observedAttributes() {
     return ["logic"];
 }
 attributeChangedCallback(name, old, now) {
     if(name=="logic" && now=="offices1") this.getAllOfficesCodeAndCityDesign() 
+
+    if(name=="logic" && now=="offices2") this.getAllOfficesCodeAndCityDesign() 
 
 
 }
