@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests",
+    "dev": "node --watch js/main.js",
     "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5371",
     "employees": "json-server -h 172.16.101.146 js/db/employees.json -p 5372",
     "gama": "json-server -h 172.16.101.146 js/db/gama.json -p 5373",
