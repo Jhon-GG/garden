@@ -5,6 +5,7 @@
   "main": "js/main.js",
   "type": "module",
   "scripts": {
+    "server" : "json-server ./js/db/clients.json --port 5371 & json-server ./js/db/employees.json --port 5372 & json-server ./js/db/gama.json --port 5373 & json-server ./js/db/offices.json --port 5374 & json-server ./js/db/payments.json --port 5375 & json-server ./js/db/products.json --port 5376 & json-server ./js/db/request_details.json --port 5377 & json-server ./js/db/requests.json --port 5378",
     "start-all": "npm run clients & npm run employees & npm run gama & npm run offices & npm run payments & npm run products & npm run request_details & npm run requests",
     "dev": "node --watch js/main.js",
     "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5371",
