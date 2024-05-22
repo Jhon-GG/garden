@@ -78,7 +78,7 @@ export const getEmployByCode = async(code) =>{
 
 
 export const getAllEmploy = async() =>{
-    let res = await fetch(`http://172.16.101.146:5502/employees`);
+    let res = await fetch(`http://172.16.101.146:5372/employees`);
     let data = await res.json();
     return data;
 }
@@ -88,7 +88,7 @@ export const getAllEmploy = async() =>{
 // 6. Lista la dirección de las oficinas que tengan clientes en Fuenlabrada.
 
 export const getCodeOfEmployeesOffice = async () => {
-    let res = await fetch(`http://172.16.101.146:5502/employees`)
+    let res = await fetch(`http://172.16.101.146:5372/employees`)
     let data = await res.json()
     return data
 }
@@ -206,7 +206,7 @@ export const getEmployeesWithoutClients = async () => {
 // ------ Funcion del 5to ejercicio -------------------------------------
 
 export const getCodeOfficeOfEmployees = async () => {
-    let res = await fetch(`http://172.16.101.146:5502/employees`)
+    let res = await fetch(`http://172.16.101.146:5372/employees`)
     let data = await res.json()
     return data
 }

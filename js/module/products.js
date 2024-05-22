@@ -21,7 +21,7 @@ export const getAllOrnamentalProducts = async () => {
 // 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
 
 export const getCodeOfProducts = async (code) => {
-    let res = await fetch(`http://172.16.101.146:5506/products?code_product=${code}`)
+    let res = await fetch(`http://172.16.101.146:5376/products?code_product=${code}`)
     let data = await res.json()
     return data
 }
@@ -34,7 +34,7 @@ export const getCodeOfProducts = async (code) => {
 
 export const getProductsThatNeverHadBeenOrdered = async () => {
 
-    let resProducts = await fetch("http://172.16.101.146:5506/products");
+    let resProducts = await fetch("http://172.16.101.146:5376/products");
     let products = await resProducts.json();
 
 
@@ -65,7 +65,7 @@ export const getProductsThatNeverHadBeenOrdered = async () => {
 export const getProductsThatNeverHadBeenInARequest = async () => {
 
 
-    let resProducts = await fetch("http://172.16.101.146:5506/products");
+    let resProducts = await fetch("http://172.16.101.146:5376/products");
     let products = await resProducts.json();
 
 
